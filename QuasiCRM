@@ -7,8 +7,8 @@ var what = event.getRange(i, 7).getValue();
   
 var url = 'LINK?what=';
 var url1 = (url.concat(what));
-var millie = UrlFetchApp.fetch(url1, {'muteHttpExceptions': true});
-var json = millie.getContentText();
+var UrlFetch = UrlFetchApp.fetch(url1, {'muteHttpExceptions': true});
+var json = UrlFetch.getContentText();
 var datas = JSON.parse(json);
 
 var dot = datas.some(item => item.telephone===what);
@@ -23,11 +23,8 @@ var lol = event.getRange(i, 60).setValue(link);
   SpreadsheetApp.getUi().showModelessDialog(ui,"demo");
 }else{
 var str100 = 'Already in database';
-  //Logger.log(bro); 
 var lol1 = event.getRange(i, 60).setValue(str100);
 datas.forEach(function(obj){ 
-console.log(obj.id);
-var bro=(obj.id);
 var editval = 'LINK/TABLE/EDIT/form2.php?id='; 
 var editval1 =(editval.concat(bro));
 var lol2 = event.getRange(i, 60).setValue(editval1);
